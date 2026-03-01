@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday 🎉</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google Fonts: Playfair Display + Lato -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ========================= -->
+  <!-- FLOATING BALLOONS (background deco) -->
+  <!-- ========================= -->
+  <div class="balloons" id="balloons"></div>
+
+  <!-- ========================= -->
+  <!-- LANDING PAGE -->
+  <!-- ========================= -->
+  <section id="landing-page" class="page active">
+
+    <!-- Hero Section -->
+    <div class="hero">
+
+      <!-- Decorative confetti canvas (landing) -->
+      <canvas id="landing-confetti" class="confetti-canvas"></canvas>
+
+      <!-- Celebrant Photo -->
+      <div class="hero-photo-wrapper">
+        <!-- REPLACE: swap src with your photo path, e.g. "photos/sarah.jpg" -->
+        <img
+          id="hero-photo"
+          src="https://api.dicebear.com/7.x/lorelei/svg?seed=birthday&backgroundColor=ffb3c6"
+          alt="Birthday Celebrant"
+          class="hero-photo"
+        />
+        <div class="photo-glow"></div>
+      </div>
+
+      <!-- Name & Greeting -->
+      <!-- REPLACE: Change "Sarah" to the celebrant's name -->
+      <h1 class="hero-title">Happy Birthday<br /><span class="name-highlight">Sarah</span> 🎉</h1>
+      <p class="hero-subtitle">Wishing you a day as magical as you are</p>
+
+      <!-- Countdown Timer -->
+      <div class="countdown-wrapper" id="countdown-wrapper">
+        <p class="countdown-label">Next Birthday In</p>
+        <div class="countdown-grid">
+          <div class="count-box"><span id="cd-days">00</span><label>Days</label></div>
+          <div class="count-box"><span id="cd-hours">00</span><label>Hours</label></div>
+          <div class="count-box"><span id="cd-mins">00</span><label>Mins</label></div>
+          <div class="count-box"><span id="cd-secs">00</span><label>Secs</label></div>
+        </div>
+        <p id="birthday-today-msg" class="birthday-today hidden">🎂 Today is the Big Day! 🎂</p>
+      </div>
+
+      <!-- Music Toggle -->
+      <button class="music-btn" id="music-btn" title="Toggle background music">
+        🎵 <span id="music-label">Play Music</span>
+      </button>
+      <!-- REPLACE: swap src with a local mp3 or hosted audio URL -->
+      <audio id="bg-music" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg" />
+      </audio>
+
+      <!-- Enter Button -->
+      <button class="cta-btn" id="enter-btn">Enter Birthday Surprise ✨</button>
+
+    </div>
+  </section>
+
+  <!-- ========================= -->
+  <!-- LOGIN PAGE -->
+  <!-- ========================= -->
+  <section id="login-page" class="page">
+    <div class="login-card">
+      <div class="login-icon">🔐</div>
+      <h2 class="login-title">Private Celebration</h2>
+      <p class="login-sub">This space is specially reserved for Sarah.<br/>Please enter your details to continue.</p>
+
+      <form id="login-form" autocomplete="off">
+        <div class="input-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" placeholder="Enter username" />
+        </div>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Enter password" />
+        </div>
+        <p id="login-error" class="login-error hidden">❌ Oops! Incorrect credentials. Try again 💕</p>
+        <button type="submit" class="cta-btn full-width">Unlock My Surprise 🎁</button>
+      </form>
+
+      <button class="back-btn" id="back-btn">← Back to Landing</button>
+    </div>
+  </section>
+
+  <!-- ========================= -->
+  <!-- PRIVATE BIRTHDAY PAGE -->
+  <!-- ========================= -->
+  <section id="birthday-page" class="page">
+
+    <!-- Confetti canvas for private page -->
+    <canvas id="birthday-confetti" class="confetti-canvas"></canvas>
+
+    <!-- ---- Gallery Section ---- -->
+    <div class="bday-section gallery-section">
+      <h2 class="section-title">💖 Our Favourite Moments</h2>
+      <div class="slideshow-container" id="slideshow">
+        <!-- REPLACE: Add your own images in the <img src="..."> tags -->
+        <div class="slide active">
+          <img src="https://api.dicebear.com/7.x/lorelei/svg?seed=moment1&backgroundColor=ffc8dd" alt="Memory 1" />
+          <p class="slide-caption">Beautiful beginnings ✨</p>
+        </div>
+        <div class="slide">
+          <img src="https://api.dicebear.com/7.x/lorelei/svg?seed=moment2&backgroundColor=ffafcc" alt="Memory 2" />
+          <p class="slide-caption">Adventures together 🌸</p>
+        </div>
+        <div class="slide">
+          <img src="https://api.dicebear.com/7.x/lorelei/svg?seed=moment3&backgroundColor=bde0fe" alt="Memory 3" />
+          <p class="slide-caption">Laughter & love 💛</p>
+        </div>
+        <div class="slide">
+          <img src="https://api.dicebear.com/7.x/lorelei/svg?seed=moment4&backgroundColor=a2d2ff" alt="Memory 4" />
+          <p class="slide-caption">Sunshine & joy ☀️</p>
+        </div>
+        <button class="slide-btn prev" id="slide-prev">❮</button>
+        <button class="slide-btn next" id="slide-next">❯</button>
+      </div>
+      <div class="slide-dots" id="slide-dots"></div>
+    </div>
+
+    <!-- ---- Heartfelt Message Section ---- -->
+    <div class="bday-section message-section">
+      <h2 class="section-title">💌 A Message From the Heart</h2>
+      <div class="message-card">
+        <!-- REPLACE: Change this message to your own heartfelt birthday note -->
+        <p>
+          Dearest Sarah,<br/><br/>
+          Every year when your birthday comes around, I'm reminded of just how lucky the world is to have you in it.
+          Your laughter lights up every room, your kindness touches every heart, and your spirit inspires everyone around you.<br/><br/>
+          On this very special day, I want you to know how deeply cherished and loved you truly are.
+          May this year bring you everything your beautiful heart desires — adventure, joy, peace, and endless love.<br/><br/>
+          Here's to you, to us, and to all the wonderful chapters still to be written. 🥂<br/><br/>
+          <em>With all the love in the world,<br/>Your biggest fan 💕</em>
+        </p>
+      </div>
+    </div>
+
+    <!-- ---- Birthday Cake Section ---- -->
+    <div class="bday-section cake-section">
+      <h2 class="section-title">🎂 Make a Wish!</h2>
+      <div class="cake-wrapper">
+        <div class="cake" id="cake">
+          <!-- Candles -->
+          <div class="candles">
+            <div class="candle"><div class="flame" id="flame1"></div></div>
+            <div class="candle"><div class="flame" id="flame2"></div></div>
+            <div class="candle"><div class="flame" id="flame3"></div></div>
+          </div>
+          <!-- Cake tiers -->
+          <div class="cake-top"></div>
+          <div class="cake-mid"></div>
+          <div class="cake-bot"></div>
+          <!-- Plate -->
+          <div class="cake-plate"></div>
+        </div>
+        <button class="blow-btn" id="blow-btn">💨 Blow Out the Candles!</button>
+        <p class="blow-msg hidden" id="blow-msg">🌟 Your wish has been made! May it come true! 🌟</p>
+      </div>
+    </div>
+
+    <!-- ---- Wishes Wall Section ---- -->
+    <div class="bday-section wishes-section">
+      <h2 class="section-title">🌷 Wishes from Friends</h2>
+      <div class="wishes-grid" id="wishes-grid">
+        <!-- REPLACE: Edit or add wish cards below -->
+        <div class="wish-card">
+          <p>"Happy birthday to the most radiant soul I know! 🌟"</p>
+          <span>— Emma</span>
+        </div>
+        <div class="wish-card">
+          <p>"Wishing you a year full of sparkle, laughter and beautiful surprises! 🥂"</p>
+          <span>— James</span>
+        </div>
+        <div class="wish-card">
+          <p>"May your day be as sweet as you are, inside and out! 🍰"</p>
+          <span>— Mum & Dad</span>
+        </div>
+        <div class="wish-card">
+          <p>"To my favourite human — cheers to you and your amazing heart! 💖"</p>
+          <span>— Olivia</span>
+        </div>
+        <div class="wish-card">
+          <p>"Another year of being absolutely wonderful. Happy birthday! ✨"</p>
+          <span>— The Gang</span>
+        </div>
+        <div class="wish-card">
+          <p>"Birthday queen! Wishing you all the magic in the universe 🦋"</p>
+          <span>— Daniel</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---- Hidden Surprise Section ---- -->
+    <div class="bday-section surprise-section">
+      <h2 class="section-title">🎁 A Special Surprise</h2>
+      <p class="surprise-hint">Ready for your secret message?</p>
+      <button class="cta-btn" id="reveal-btn">Reveal My Surprise 💝</button>
+      <div class="surprise-reveal hidden" id="surprise-reveal">
+        <!-- REPLACE: Change this to your personal surprise message or embed a YouTube video -->
+        <div class="surprise-card">
+          <div class="surprise-emoji">🌹</div>
+          <h3>A Secret Just For You</h3>
+          <p>
+            Sarah, this is your reminder that you are extraordinary. Not just today, not just on birthdays,
+            but every single day. You bring so much colour to this world, and I am endlessly grateful for
+            every moment I get to share with you. This year, let's make memories so wonderful that they
+            become our favourite stories to tell. I love you more than words can say. 💗
+          </p>
+          <!-- OPTIONAL: Uncomment and add a YouTube embed URL to show a video surprise -->
+          <!--
+          <iframe
+            width="100%" height="315"
+            src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+            frameborder="0" allowfullscreen>
+          </iframe>
+          -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bday-footer">
+      <p>Made with 💕 just for Sarah · Happy Birthday 🎂</p>
+    </footer>
+
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
